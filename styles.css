@@ -296,6 +296,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
   font-size: 1.8rem; /* Tamaño del icono */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
@@ -316,7 +317,7 @@ body {
 
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 690px) {
   /* Ajustes para el Header en móvil */
   .header-inner {
     flex-direction: column; /* Apila el título y el botón en columna */
@@ -345,8 +346,8 @@ body {
   .nav-list {
     flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
     justify-content: center; /* Centra los elementos cuando se envuelven */
-    gap: 1rem; /* Aumentado el espacio entre elementos de navegación */
-    padding: 0.75rem 0; /* Ajuste del padding vertical */
+    gap: 0.01rem; /* Aumentado el espacio entre elementos de navegación */
+    padding: 0.2rem 0; /* Ajuste del padding vertical */
   }
 
   .nav-list a {
