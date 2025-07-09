@@ -318,7 +318,10 @@ body {
 
 /* Responsive */
 @media (max-width: 690px) {
-  /* Ajustes para el Header en móvil */
+  body {
+    background-image: none;
+  }
+
   .header-inner {
     flex-direction: column; /* Apila el título y el botón en columna */
     align-items: center; /* Centra los elementos */
