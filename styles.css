@@ -1,0 +1,374 @@
+/* Reset muy ligero */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Variables de color */
+:root {
+  --fondo: #0f0f0f;
+  --texto: #f5f5f5;
+  --secundario: #a0a0a0;
+  --acento: #2095ff;
+  --acento2:rgb(137, 198, 255);
+  --recuadro-bg: rgba(255,255,255,0.1);
+  --nav-bg: rgba(15, 15, 15, 0.9); /* Fondo para la navegación con transparencia */
+}
+
+/* Tipografía base */
+body {
+  font-family: 'Outfit', sans-serif; /* Aquí se mantiene Outfit, si quieres Roboto Mono, recuerda cambiarlo en index.html y aquí */
+  background-color: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+  /* Nuevos estilos para el fondo de imagen */
+  background-image: url('assets/bk2.png'); /* Ruta a tu imagen de fondo */
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+  background-attachment: fixed; /* Mantiene la imagen fija mientras se hace scroll */
+  background-position: center center; /* Centra la imagen de fondo */
+}
+
+/* Contenedor centrado */
+.container {
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+/* Header */
+#header {
+  background-color: var(--fondo);
+  /* Eliminamos position: sticky, top y z-index para que el header se desplace con el scroll */
+  border-bottom: 1px solid var(--secundario);
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+.header-inner h1 {
+  font-size: 2rem; /* Aumentado para mayor diferenciación */
+}
+
+/* Contenedor para el botón de CV y la previsualización */
+.btn-cv-wrapper {
+  position: relative; /* Necesario para posicionar el preview-container */
+  display: inline-block; /* Para que ocupe solo el espacio de su contenido */
+}
+
+.btn-cv {
+  background-color: var(--acento);
+  color: #000;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  /* Animación mejorada para el botón */
+  transition: background 0.3s ease-in-out, transform 0.2s ease-out;
+}
+.btn-cv:hover {
+  background-color: #1a7cd8;
+  transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+}
+
+/* Estilos para el contenedor de previsualización del CV */
+.cv-preview-container {
+  position: absolute;
+  top: 100%; /* Se posiciona justo debajo del botón */
+  right: 0; /* Alineado a la derecha del botón */
+  width: 350px; /* Ancho de la previsualización */
+  height: 450px; /* Alto de la previsualización */
+  background-color: var(--recuadro-bg);
+  border: 1px solid var(--acento);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  overflow: hidden; /* Asegura que el iframe no se salga */
+  opacity: 0; /* Inicialmente invisible */
+  visibility: hidden; /* Oculto para no ocupar espacio y no ser interactuable */
+  transform: translateY(10px); /* Pequeño desplazamiento inicial */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Transición suave */
+  z-index: 100; /* Asegura que esté por encima de otros elementos */
+}
+
+.btn-cv-wrapper:hover .cv-preview-container {
+  opacity: 1; /* Visible al pasar el ratón */
+  visibility: visible;
+  transform: translateY(0); /* Vuelve a su posición original */
+}
+
+.cv-preview-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem; /* Hereda el border-radius del contenedor */
+}
+
+
+/* Navegación */
+#nav {
+  background-color: var(--nav-bg); /* Usando la nueva variable de fondo */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque para el fondo */
+  border-bottom: 2px solid var(--acento); /* Borde inferior más pronunciado */
+  position: sticky;
+  top: 0; /* Ahora se pegará a la parte superior de la ventana al hacer scroll */
+  z-index: 9;
+  /* Animación mejorada para la sombra */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
+  transition: box-shadow 0.3s ease-in-out; /* Transición para la sombra */
+}
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Aumentado el espacio entre elementos */
+  padding: 0.75rem 0; /* Aumentado el padding para más altura */
+  list-style: none;
+}
+.nav-list a {
+  color: var(--texto);
+  text-decoration: none;
+  padding: 0.6rem 1rem; /* Aumentado el padding para un área de clic más grande */
+  border-radius: 0.75rem; /* Bordes más redondeados */
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transiciones más suaves */
+  font-weight: 600; /* Texto más negrita */
+}
+.nav-list a:hover {
+  background-color: rgba(32, 149, 255, 0.2); /* Fondo más sutil al pasar el ratón */
+  color: var(--acento);
+  transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+.nav-list a.active {
+  background-color: var(--acento); /* Fondo de acento para la sección activa */
+  color: #000; /* Texto oscuro para contrastar con el acento */
+}
+
+/* Secciones */
+.section {
+  background: var(--recuadro-bg);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Animación de fade-in más fluida */
+  opacity: 0;
+  transform: translateY(10px);
+  scroll-margin-top: 6rem; /* Añadido para compensar la altura de la barra de navegación fija */
+
+}
+
+/* Fade-in al entrar en viewport */
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Títulos de sección */
+.section h2 {
+  font-size: 1.8rem; /* Aumentado para mayor diferenciación */
+  margin-bottom: 0.75rem;
+  color: var(--acento);
+}
+
+/* Subtítulos dentro de secciones */
+.section h3 {
+  font-size: 1.35rem; /* Nuevo estilo para h3 */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--acento2); /* Color del texto principal */
+}
+
+/* Listas con viñetas */
+.section ul {
+  list-style: disc inside;
+  margin-top: 0.5rem;
+}
+
+.section a {
+  color: var(--acento);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Estilos para la sección de Perfil */
+.profile-content {
+  display: flex;
+  flex-direction: column; /* Por defecto en columna para móviles */
+  gap: 1.5rem; /* Espacio entre los elementos */
+  align-items: flex-start; /* Alinea elementos al inicio */
+}
+
+.profile-sidebar {
+  display: flex; /* Mantiene flex para centrar la imagen en móvil */
+  flex-direction: column;
+  align-items: center; /* Centra la imagen en móvil */
+  text-align: center; /* Centra el texto si hubiera, pero solo la imagen */
+  width: 100%; /* Ancho completo en móvil */
+}
+
+.profile-img {
+  width: 240px; /* Aumentado el tamaño de la imagen */
+  height: 240px; /* Aumentado el tamaño de la imagen */
+  border-radius: 50%;
+  object-fit: cover; /* Asegura que la imagen se ajuste bien */
+  margin-bottom: 1rem; /* Margen inferior para separar de otros elementos si los hubiera */
+  border: 3px solid var(--acento); /* Añade un borde para destacar */
+}
+
+.contact-list {
+  list-style: none; /* Elimina las viñetas por defecto */
+  padding: 0;
+  margin-top: 1rem; /* Margen superior para separarlo del párrafo del resumen */
+  text-align: left; /* Alinea el texto de la lista a la izquierda */
+  width: 100%; /* Ocupa el ancho completo */
+}
+
+.contact-list li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Espacio entre el icono y el texto */
+}
+
+.contact-list li i {
+  color: var(--acento); /* Color para los iconos */
+  font-size: 1.1rem;
+  width: 20px; /* Ancho fijo para los iconos para alinear el texto */
+  text-align: center;
+}
+
+.profile-summary {
+  flex-grow: 1; /* Permite que el resumen ocupe el espacio restante */
+}
+
+
+/* Footer */
+#footer {
+  background-color: var(--fondo);
+  border-top: 1px solid var(--secundario);
+  height: 130px;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--secundario);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Añadido para posicionar el botón de volver arriba */
+}
+
+.contact-info-footer p {
+  margin-bottom: 0.25rem;
+}
+
+.contact-info-footer a {
+  color: var(--acento);
+  text-decoration: none;
+  /* Animación mejorada para los enlaces del footer */
+  transition: color 0.3s ease-in-out, transform 0.2s ease-out;
+}
+
+.footer-social-links {
+  margin-top: 0.5rem;
+}
+
+.footer-social-links a {
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  color: var(--secundario);
+  transition: color 0.2s;
+}
+
+.footer-social-links a:hover {
+  color: var(--acento);
+  transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+}
+
+/* Estilos para el botón "Volver al inicio" */
+.back-to-top {
+  position: fixed; /* Posición fija en la ventana */
+  bottom: 20px; /* 20px desde la parte inferior */
+  right: 20px; /* 20px desde la parte derecha */
+  background-color: var(--acento);
+  color: #000;
+  width: 50px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  border-radius: 50%; /* Forma circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; /* Sin subrayado */
+  font-size: 1.8rem; /* Tamaño del icono */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease; 
+  opacity: 0; /* Inicialmente invisible */
+  visibility: hidden; /* Oculto para no ocupar espacio */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.back-to-top:hover {
+  background-color: #1a7cd8;
+  transform: translateY(-3px); /* Efecto de elevación al pasar el ratón */
+}
+
+.back-to-top.show {
+  opacity: 1; /* Visible cuando se añade la clase 'show' */
+  visibility: visible;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-inner h1 { font-size: 1.5rem; }
+  .btn-cv { padding: 0.4rem 0.8rem; }
+  .nav-list { flex-wrap: wrap; gap: 0.5rem;}
+  .nav-list a {
+    padding: 0.5rem 0.75rem; /* Ajuste de padding para móviles */
+    font-size: 0.9rem; /* Tamaño de fuente ligeramente más pequeño */
+  }
+
+  /* Ocultar la previsualización en pantallas pequeñas */
+  .cv-preview-container {
+    display: none;
+  }
+
+  /* Ajuste para el botón "Volver al inicio" en móviles */
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Responsive para Perfil */
+@media (min-width: 768px) {
+  .profile-content {
+    flex-direction: row; /* En fila para pantallas más grandes */
+    align-items: flex-start; /* Alinea elementos al inicio */
+    justify-content: space-between; /* Distribuye el espacio entre las columnas */
+  }
+
+  .profile-summary {
+    flex: 1; /* Ocupa el espacio disponible en la columna izquierda */
+    margin-right: 2rem; /* Espacio entre el resumen/contacto y la imagen */
+    order: 1; /* Asegura que sea la primera columna */
+  }
+
+  .profile-sidebar {
+    flex: 0 0 200px; /* Ancho fijo para la columna de la imagen (ajustado para 180px + padding) */
+    align-items: center; /* Centra la imagen dentro de su columna */
+    text-align: center; /* Centra la imagen si es el único contenido */
+    order: 2; /* Coloca la columna de la imagen a la derecha */
+  }
+
+  .profile-img {
+    margin-bottom: 0; /* No hay margen inferior en la imagen cuando es el único elemento en la barra lateral */
+  }
+
+  .contact-list {
+    /* No se necesitan cambios específicos aquí para escritorio, ya que ahora está dentro de profile-summary */
+    margin-top: 1rem; /* Mantiene el margen desde el texto del resumen */
+    width: auto; /* Permite que tome el ancho natural */
+  }
+}
