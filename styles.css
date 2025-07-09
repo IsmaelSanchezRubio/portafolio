@@ -356,6 +356,10 @@ body {
     font-size: 0.85rem; /* Tamaño de fuente ligeramente más pequeño para dar espacio */
   }
 
+  .section {
+    scroll-margin-top: 7rem; /* Añadido para compensar la altura de la barra de navegación fija */
+  }
+
   /* Ajuste para el botón "Volver al inicio" en móviles */
   .back-to-top {
     width: 45px; /* Ligeramente más pequeño */
