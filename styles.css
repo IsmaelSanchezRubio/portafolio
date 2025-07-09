@@ -36,7 +36,6 @@ body {
 /* Header */
 #header {
   background-color: var(--fondo);
-  /* Eliminamos position: sticky, top y z-index para que el header se desplace con el scroll */
   border-bottom: 1px solid var(--secundario);
 }
 .header-inner {
@@ -142,12 +141,13 @@ body {
 /* Secciones */
 .section {
   background: var(--recuadro-bg);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Animación de fade-in más fluida */
+  /* Animación de fade-in más fluida */
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
   opacity: 0;
   transform: translateY(10px);
   scroll-margin-top: 6rem; /* Añadido para compensar la altura de la barra de navegación fija */
@@ -296,10 +296,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none; /* Sin subrayado */
   font-size: 1.8rem; /* Tamaño del icono */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
   opacity: 0; /* Inicialmente invisible */
   visibility: hidden; /* Oculto para no ocupar espacio */
   z-index: 1000; /* Asegura que esté por encima de otros elementos */
@@ -318,12 +317,23 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .header-inner h1 { font-size: 1.5rem; }
-  .btn-cv { padding: 0.4rem 0.8rem; }
-  .nav-list { flex-wrap: wrap; gap: 0.5rem;}
-  .nav-list a {
-    padding: 0.5rem 0.75rem; /* Ajuste de padding para móviles */
-    font-size: 0.9rem; /* Tamaño de fuente ligeramente más pequeño */
+  /* Ajustes para el Header en móvil */
+  .header-inner {
+    flex-direction: column; /* Apila el título y el botón en columna */
+    align-items: center; /* Centra los elementos */
+    text-align: center; /* Centra el texto del título */
+    gap: 0.5rem; /* Espacio entre el título y el botón */
+  }
+
+  .header-inner h1 {
+    font-size: 1.8rem; /* Ajuste de tamaño para el título en móvil */
+    margin-bottom: 0.5rem; /* Espacio debajo del título */
+  }
+
+  /* Ajustes para el botón de CV en móvil */
+  .btn-cv {
+    padding: 0.6rem 1.2rem; /* Aumentar un poco el padding para mejor toque */
+    font-size: 0.95rem; /* Ajuste de tamaño de fuente */
   }
 
   /* Ocultar la previsualización en pantallas pequeñas */
@@ -331,11 +341,24 @@ body {
     display: none;
   }
 
+  /* Ajustes para la Navegación en móvil */
+  .nav-list {
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+    justify-content: center; /* Centra los elementos cuando se envuelven */
+    gap: 1rem; /* Aumentado el espacio entre elementos de navegación */
+    padding: 0.75rem 0; /* Ajuste del padding vertical */
+  }
+
+  .nav-list a {
+    padding: 0.7rem 1.2rem; /* Aumenta el padding para un área de clic más grande y más espacio horizontal */
+    font-size: 0.85rem; /* Tamaño de fuente ligeramente más pequeño para dar espacio */
+  }
+
   /* Ajuste para el botón "Volver al inicio" en móviles */
   .back-to-top {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+    width: 45px; /* Ligeramente más pequeño */
+    height: 45px; /* Ligeramente más pequeño */
+    font-size: 1.6rem; /* Tamaño del icono ajustado */
     bottom: 15px;
     right: 15px;
   }
@@ -367,7 +390,6 @@ body {
   }
 
   .contact-list {
-    /* No se necesitan cambios específicos aquí para escritorio, ya que ahora está dentro de profile-summary */
     margin-top: 1rem; /* Mantiene el margen desde el texto del resumen */
     width: auto; /* Permite que tome el ancho natural */
   }
