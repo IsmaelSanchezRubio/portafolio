@@ -344,8 +344,9 @@ body {
 
   /* Ajustes para la Navegación en móvil */
   .nav-list {
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
     justify-content: center; /* Centra los elementos cuando se envuelven */
-    gap: 0.1rem; /* Aumentado el espacio entre elementos de navegación */
+    gap: 0.9rem; /* Aumentado el espacio entre elementos de navegación */
     padding: 0.2rem 0; /* Ajuste del padding vertical */
     
   }
