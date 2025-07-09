@@ -9,7 +9,7 @@
   --acento: #2095ff;
   --acento2:rgb(137, 198, 255);
   --recuadro-bg: rgba(255,255,255,0.1);
-  --nav-bg: rgba(15, 15, 15, 0.9); /* Fondo para la navegación con transparencia */
+  --nav-bg: rgba(15, 15, 15, 0.9); 
 }
 
 /* Tipografía base */
@@ -19,7 +19,7 @@ body {
   color: var(--texto);
   line-height: 1.5;
   /* Nuevos estilos para el fondo de imagen */
-  background-image: url('assets/bk2.png'); /* Ruta a tu imagen de fondo */
+  background-image: url('assets/diamond-sunset.png'); /* Ruta a tu imagen de fondo */
   background-size: cover; /* Asegura que la imagen cubra todo el fondo */
   background-attachment: fixed; /* Mantiene la imagen fija mientras se hace scroll */
   background-position: center center; /* Centra la imagen de fondo */
@@ -141,7 +141,7 @@ body {
 /* Secciones */
 .section {
   background: var(--recuadro-bg);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(1px);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 0.75rem;
   padding: 1.5rem;
@@ -318,9 +318,6 @@ body {
 
 /* Responsive */
 @media (max-width: 690px) {
-  body {
-    background-image: none;
-  }
 
   .header-inner {
     flex-direction: column; /* Apila el título y el botón en columna */
