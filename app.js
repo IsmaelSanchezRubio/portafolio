@@ -4,21 +4,23 @@ document.querySelectorAll('#nav a').forEach(link => {
     e.preventDefault();
     document.querySelector(link.getAttribute('href'))
       .scrollIntoView({ behavior: 'smooth' });
-    // marcar activo
+    // Marcar activo: Elimina la clase 'active' de todos los enlaces y la añade al enlace clicado.
     document.querySelectorAll('.nav-list a').forEach(a => a.classList.remove('active'));
     link.classList.add('active');
   });
 });
 
 // Intersection Observer para fade-in de secciones
+// Observa cada sección y añade la clase 'visible' cuando entra en el viewport.
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      // Una vez que la sección es visible, deja de observarla para optimizar el rendimiento.
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.2 });
+}, { threshold: 0.2 }); // El 20% de la sección debe ser visible para activar el efecto.
 
 document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
@@ -29,6 +31,7 @@ document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 document.querySelectorAll('.acc-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const panel = btn.nextElementSibling;
+    // Alterna la altura máxima del panel para mostrar/ocultar el contenido.
     panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + 'px';
   });
 });
@@ -42,6 +45,7 @@ const highlightNavOnScroll = () => {
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
+    // Determina qué sección está actualmente en el viewport o cerca de él.
     if (pageYOffset >= sectionTop - sectionHeight / 3) { // Ajusta el offset para una mejor activación
       current = section.getAttribute('id');
     }
@@ -49,6 +53,7 @@ const highlightNavOnScroll = () => {
 
   navLinks.forEach(link => {
     link.classList.remove('active');
+    // Añade la clase 'active' al enlace de navegación correspondiente a la sección actual.
     if (link.getAttribute('href').includes(current)) {
       link.classList.add('active');
     }
@@ -72,3 +77,21 @@ const toggleBackToTopButton = () => {
 
 window.addEventListener('scroll', toggleBackToTopButton);
 window.addEventListener('load', toggleBackToTopButton); // Para que se active al cargar la página si ya hay scroll
+
+// NUEVA LÓGICA: Efecto "pegajoso" y de contracción para el Header
+const header = document.getElementById('header');
+const scrollThreshold = 50; // Define la cantidad de scroll (en píxeles) para activar el efecto.
+
+const handleHeaderScroll = () => {
+  // Si el scroll vertical es mayor que el umbral, añade la clase 'scrolled' al header.
+  // De lo contrario, quita la clase.
+  if (window.pageYOffset > scrollThreshold) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+};
+
+// Añade los event listeners para el scroll y la carga de la página.
+window.addEventListener('scroll', handleHeaderScroll);
+window.addEventListener('load', handleHeaderScroll); // Para aplicar el estilo si la página se carga con scroll.

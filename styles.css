@@ -37,16 +37,38 @@ body {
 #header {
   background-color: var(--fondo);
   border-bottom: 1px solid var(--secundario);
+  /* Añadido: Transición para el cambio de tamaño/estilo del header */
+  transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
+  /* Añadido: Transición para el cambio de tamaño del h1 */
+  transition: all 0.3s ease;
 }
 .header-inner h1 {
   font-size: 2rem; /* Aumentado para mayor diferenciación */
+  /* Añadido: Transición para el cambio de tamaño del h1 */
+  transition: font-size 0.3s ease;
 }
+
+/* Estilos para el header cuando se hace scroll (se añadirá con JS) */
+#header.scrolled {
+  padding: 0.5rem 0; /* Reduce el padding para un header más compacto */
+  background-color: rgba(15, 15, 15, 0.95); /* Un fondo ligeramente más opaco */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+}
+
+#header.scrolled .header-inner {
+  padding: 0.5rem 0; /* Asegura que el padding interno también se reduzca */
+}
+
+#header.scrolled .header-inner h1 {
+  font-size: 1.6rem; /* Reduce el tamaño del título */
+}
+
 
 /* Contenedor para el botón de CV y la previsualización */
 .btn-cv-wrapper {
@@ -146,10 +168,10 @@ body {
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  /* Animación de fade-in más fluida */
-  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  /* Animación de fade-in más fluida y con un ligero desplazamiento */
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(20px); /* Aumentado el desplazamiento inicial */
   scroll-margin-top: 6rem; /* Añadido para compensar la altura de la barra de navegación fija */
   font-size: 1.1rem;; /* Tamaño de fuente base para secciones */
 
@@ -211,6 +233,12 @@ body {
   object-fit: cover; /* Asegura que la imagen se ajuste bien */
   margin-bottom: 1rem; /* Margen inferior para separar de otros elementos si los hubiera */
   border: 3px solid var(--acento); /* Añade un borde para destacar */
+  box-shadow: 0 0 15px rgba(32, 149, 255, 0.5); /* Sombra sutil para la imagen */
+  transition: transform 0.3s ease-in-out; /* Transición para el efecto hover */
+}
+
+.profile-img:hover {
+  transform: scale(1.03); /* Ligeramente más grande al pasar el ratón */
 }
 
 .contact-list {
@@ -276,12 +304,14 @@ body {
   font-size: 1.2rem;
   margin: 0 0.5rem;
   color: var(--secundario);
-  transition: color 0.2s;
+  /* Micro-interacción: Sombra y ligero crecimiento al pasar el ratón */
+  transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
 }
 
 .footer-social-links a:hover {
   color: var(--acento);
-  transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+  transform: translateY(-3px) scale(1.1); /* Elevación y ligero crecimiento */
+  text-shadow: 0 0 8px var(--acento); /* Sombra brillante */
 }
 
 /* Estilos para el botón "Volver al inicio" */
