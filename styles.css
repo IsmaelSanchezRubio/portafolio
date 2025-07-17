@@ -9,20 +9,19 @@
   --acento: #2095ff;
   --acento2:rgb(137, 198, 255);
   --recuadro-bg: rgba(255,255,255,0.1);
-  --nav-bg: rgba(15, 15, 15, 0.9); 
+  --nav-bg: rgba(15, 15, 15, 0.9);
 }
 
 /* Tipografía base */
 body {
-  font-family: 'Outfit', sans-serif; /* Aquí se mantiene Outfit, si quieres Roboto Mono, recuerda cambiarlo en index.html y aquí */
+  font-family: 'Outfit', sans-serif;
   background-color: var(--fondo);
   color: var(--texto);
   line-height: 1.5;
-  /* Nuevos estilos para el fondo de imagen */
-  background-image: url('assets/diamond-sunset.png'); /* Ruta a tu imagen de fondo */
-  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-  background-attachment: fixed; /* Mantiene la imagen fija mientras se hace scroll */
-  background-position: center center; /* Centra la imagen de fondo */
+  background-image: url('assets/diamond-sunset.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
 }
 
 /* Contenedor centrado */
@@ -37,7 +36,6 @@ body {
 #header {
   background-color: var(--fondo);
   border-bottom: 1px solid var(--secundario);
-  /* Añadido: Transición para el cambio de tamaño/estilo del header */
   transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .header-inner {
@@ -45,35 +43,34 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  /* Añadido: Transición para el cambio de tamaño del h1 */
   transition: all 0.3s ease;
 }
 .header-inner h1 {
-  font-size: 2rem; /* Aumentado para mayor diferenciación */
-  /* Añadido: Transición para el cambio de tamaño del h1 */
+  font-size: 2rem;
   transition: font-size 0.3s ease;
 }
 
 /* Estilos para el header cuando se hace scroll (se añadirá con JS) */
 #header.scrolled {
-  padding: 0.5rem 0; /* Reduce el padding para un header más compacto */
-  background-color: rgba(15, 15, 15, 0.95); /* Un fondo ligeramente más opaco */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+  padding: 0.5rem 0;
+  background-color: rgba(15, 15, 15, 0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 #header.scrolled .header-inner {
-  padding: 0.5rem 0; /* Asegura que el padding interno también se reduzca */
+  padding: 0.5rem 0;
 }
 
 #header.scrolled .header-inner h1 {
-  font-size: 1.6rem; /* Reduce el tamaño del título */
+  font-size: 1.6rem;
 }
 
 
 /* Contenedor para el botón de CV y la previsualización */
 .btn-cv-wrapper {
-  position: relative; /* Necesario para posicionar el preview-container */
-  display: inline-block; /* Para que ocupe solo el espacio de su contenido */
+  position: relative;
+  display: inline-block;
+  margin-left: 1rem;
 }
 
 .btn-cv {
@@ -83,81 +80,79 @@ body {
   text-decoration: none;
   font-weight: 600;
   border-radius: 0.5rem;
-  /* Animación mejorada para el botón */
   transition: background 0.3s ease-in-out, transform 0.2s ease-out;
 }
 .btn-cv:hover {
   background-color: #1a7cd8;
-  transform: translateY(-2px); /* Pequeño efecto de elevación al pasar el ratón */
+  transform: translateY(-2px);
 }
 
 /* Estilos para el contenedor de previsualización del CV */
 .cv-preview-container {
   position: absolute;
-  top: 100%; /* Se posiciona justo debajo del botón */
-  right: 0; /* Alineado a la derecha del botón */
-  width: 350px; /* Ancho de la previsualización */
-  height: 450px; /* Alto de la previsualización */
+  top: 100%;
+  right: 0;
+  width: 350px;
+  height: 450px;
   background-color: var(--recuadro-bg);
   border: 1px solid var(--acento);
   border-radius: 0.75rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-  overflow: hidden; /* Asegura que el iframe no se salga */
-  opacity: 0; /* Inicialmente invisible */
-  visibility: hidden; /* Oculto para no ocupar espacio y no ser interactuable */
-  transform: translateY(10px); /* Pequeño desplazamiento inicial */
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Transición suave */
-  z-index: 100; /* Asegura que esté por encima de otros elementos */
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
 }
 
 .btn-cv-wrapper:hover .cv-preview-container {
-  opacity: 1; /* Visible al pasar el ratón */
+  opacity: 1;
   visibility: visible;
-  transform: translateY(0); /* Vuelve a su posición original */
+  transform: translateY(0);
 }
 
 .cv-preview-container iframe {
   width: 100%;
   height: 100%;
-  border-radius: 0.75rem; /* Hereda el border-radius del contenedor */
+  border-radius: 0.75rem;
 }
 
 
 /* Navegación */
 #nav {
-  background-color: var(--nav-bg); /* Usando la nueva variable de fondo */
-  backdrop-filter: blur(5px); /* Efecto de desenfoque para el fondo */
-  border-bottom: 2px solid var(--acento); /* Borde inferior más pronunciado */
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(5px);
+  border-bottom: 2px solid var(--acento);
   position: sticky;
-  top: 0; /* Ahora se pegará a la parte superior de la ventana al hacer scroll */
+  top: 0;
   z-index: 9;
-  /* Animación mejorada para la sombra */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
-  transition: box-shadow 0.3s ease-in-out; /* Transición para la sombra */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
 }
 .nav-list {
   display: flex;
   justify-content: center;
-  gap: 1.5rem; /* Aumentado el espacio entre elementos */
-  padding: 0.75rem 0; /* Aumentado el padding para más altura */
+  gap: 1.5rem;
+  padding: 0.75rem 0;
   list-style: none;
 }
 .nav-list a {
   color: var(--texto);
   text-decoration: none;
-  padding: 0.6rem 1rem; /* Aumentado el padding para un área de clic más grande */
-  border-radius: 0.75rem; /* Bordes más redondeados */
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transiciones más suaves */
-  font-weight: 600; /* Texto más negrita */
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-weight: 600;
 }
 .nav-list a:hover {
-  background-color: rgba(32, 149, 255, 0.2); /* Fondo más sutil al pasar el ratón */
+  background-color: rgba(32, 149, 255, 0.2);
   color: var(--acento);
-  transform: translateY(-2px); /* Pequeño efecto de elevación */
+  transform: translateY(-2px);
 }
 .nav-list a.active {
-  background-color: var(--acento); /* Fondo de acento para la sección activa */
-  color: #000; /* Texto oscuro para contrastar con el acento */
+  background-color: var(--acento);
+  color: #000;
 }
 
 /* Secciones */
@@ -168,12 +163,11 @@ body {
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  /* Animación de fade-in más fluida y con un ligero desplazamiento */
   transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
-  transform: translateY(20px); /* Aumentado el desplazamiento inicial */
-  scroll-margin-top: 6rem; /* Añadido para compensar la altura de la barra de navegación fija */
-  font-size: 1.1rem;; /* Tamaño de fuente base para secciones */
+  transform: translateY(20px);
+  scroll-margin-top: 6rem;
+  font-size: 1.1rem;;
 
 }
 
@@ -185,17 +179,17 @@ body {
 
 /* Títulos de sección */
 .section h2 {
-  font-size: 1.8rem; /* Aumentado para mayor diferenciación */
+  font-size: 1.8rem;
   margin-bottom: 0.75rem;
   color: var(--acento);
 }
 
 /* Subtítulos dentro de secciones */
 .section h3 {
-  font-size: 1.35rem; /* Nuevo estilo para h3 */
+  font-size: 1.35rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--acento2); /* Color del texto principal */
+  color: var(--acento2);
 }
 
 /* Listas con viñetas */
@@ -205,7 +199,7 @@ body {
 }
 
 .section a {
-  color: var(--acento);
+  color: var(--texto);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -213,58 +207,58 @@ body {
 /* Estilos para la sección de Perfil */
 .profile-content {
   display: flex;
-  flex-direction: column; /* Por defecto en columna para móviles */
-  gap: 1.5rem; /* Espacio entre los elementos */
-  align-items: flex-start; /* Alinea elementos al inicio */
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
 }
 
 .profile-sidebar {
-  display: flex; /* Mantiene flex para centrar la imagen en móvil */
+  display: flex;
   flex-direction: column;
-  align-items: center; /* Centra la imagen en móvil */
-  text-align: center; /* Centra el texto si hubiera, pero solo la imagen */
-  width: 100%; /* Ancho completo en móvil */
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .profile-img {
-  width: 240px; /* Aumentado el tamaño de la imagen */
-  height: 240px; /* Aumentado el tamaño de la imagen */
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
-  object-fit: cover; /* Asegura que la imagen se ajuste bien */
-  margin-bottom: 1rem; /* Margen inferior para separar de otros elementos si los hubiera */
-  border: 3px solid var(--acento); /* Añade un borde para destacar */
-  box-shadow: 0 0 15px rgba(32, 149, 255, 0.5); /* Sombra sutil para la imagen */
-  transition: transform 0.3s ease-in-out; /* Transición para el efecto hover */
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 3px solid var(--acento);
+  box-shadow: 0 0 15px rgba(32, 149, 255, 0.5);
+  transition: transform 0.3s ease-in-out;
 }
 
 .profile-img:hover {
-  transform: scale(1.03); /* Ligeramente más grande al pasar el ratón */
+  transform: scale(1.03);
 }
 
 .contact-list {
-  list-style: none; /* Elimina las viñetas por defecto */
+  list-style: none;
   padding: 0;
-  margin-top: 1rem; /* Margen superior para separarlo del párrafo del resumen */
-  text-align: left; /* Alinea el texto de la lista a la izquierda */
-  width: 100%; /* Ocupa el ancho completo */
+  margin-top: 1rem;
+  text-align: left;
+  width: 100%;
 }
 
 .contact-list li {
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* Espacio entre el icono y el texto */
+  gap: 0.75rem;
 }
 
 .contact-list li i {
-  color: var(--acento); /* Color para los iconos */
+  color: var(--acento);
   font-size: 1.1rem;
-  width: 20px; /* Ancho fijo para los iconos para alinear el texto */
+  width: 20px;
   text-align: center;
 }
 
 .profile-summary {
-  flex-grow: 1; /* Permite que el resumen ocupe el espacio restante */
+  flex-grow: 1;
 }
 
 
@@ -282,7 +276,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* Añadido para posicionar el botón de volver arriba */
+  position: relative;
 }
 
 .contact-info-footer p {
@@ -292,7 +286,6 @@ body {
 .contact-info-footer a {
   color: var(--acento);
   text-decoration: none;
-  /* Animación mejorada para los enlaces del footer */
   transition: color 0.3s ease-in-out, transform 0.2s ease-out;
 }
 
@@ -304,45 +297,44 @@ body {
   font-size: 1.2rem;
   margin: 0 0.5rem;
   color: var(--secundario);
-  /* Micro-interacción: Sombra y ligero crecimiento al pasar el ratón */
   transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
 }
 
 .footer-social-links a:hover {
   color: var(--acento);
-  transform: translateY(-3px) scale(1.1); /* Elevación y ligero crecimiento */
-  text-shadow: 0 0 8px var(--acento); /* Sombra brillante */
+  transform: translateY(-3px) scale(1.1);
+  text-shadow: 0 0 8px var(--acento);
 }
 
 /* Estilos para el botón "Volver al inicio" */
 .back-to-top {
-  position: fixed; /* Posición fija en la ventana */
-  bottom: 20px; /* 20px desde la parte inferior */
-  right: 20px; /* 20px desde la parte derecha */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   background-color: var(--acento);
   color: #000;
-  width: 50px; /* Ancho del botón */
-  height: 50px; /* Alto del botón */
-  border-radius: 50%; /* Forma circular */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  font-size: 1.8rem; /* Tamaño del icono */
+  font-size: 1.8rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
-  opacity: 0; /* Inicialmente invisible */
-  visibility: hidden; /* Oculto para no ocupar espacio */
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
 }
 
 .back-to-top:hover {
   background-color: #1a7cd8;
-  transform: translateY(-3px); /* Efecto de elevación al pasar el ratón */
+  transform: translateY(-3px);
 }
 
 .back-to-top.show {
-  opacity: 1; /* Visible cuando se añade la clase 'show' */
+  opacity: 1;
   visibility: visible;
 }
 
@@ -351,55 +343,51 @@ body {
 @media (max-width: 690px) {
 
   .header-inner {
-    flex-direction: column; /* Apila el título y el botón en columna */
-    align-items: center; /* Centra los elementos */
-    text-align: center; /* Centra el texto del título */
-    gap: 0.5rem; /* Espacio entre el título y el botón */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
   }
 
   .header-inner h1 {
-    font-size: 1.8rem; /* Ajuste de tamaño para el título en móvil */
-    margin-bottom: 0.5rem; /* Espacio debajo del título */
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
 
-  /* Ajustes para el botón de CV en móvil */
   .btn-cv {
-    padding: 0.6rem 1.2rem; /* Aumentar un poco el padding para mejor toque */
-    font-size: 0.95rem; /* Ajuste de tamaño de fuente */
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
   }
 
-  /* Ocultar la previsualización en pantallas pequeñas */
   .cv-preview-container {
     display: none;
   }
 
-  /* Ajustes para la Navegación en móvil */
   .nav-list {
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
-    justify-content: center; /* Centra los elementos cuando se envuelven */
-    gap: 0.9rem; /* Aumentado el espacio entre elementos de navegación */
-    padding: 0.2rem 0; /* Ajuste del padding vertical */
-    
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 0.2rem 0;
+
   }
 
   .nav-list a {
-    padding: 0.7rem 1.2rem; /* Aumenta el padding para un área de clic más grande y más espacio horizontal */
-    font-size: 0.85rem; /* Tamaño de fuente ligeramente más pequeño para dar espacio */
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
   }
 
   .section {
-    scroll-margin-top: 7rem; /* Añadido para compensar la altura de la barra de navegación fija */
+    scroll-margin-top: 7rem;
   }
 
   #footer{
     height: 150px;
   }
 
-  /* Ajuste para el botón "Volver al inicio" en móviles */
   .back-to-top {
-    width: 45px; /* Ligeramente más pequeño */
-    height: 45px; /* Ligeramente más pequeño */
-    font-size: 1.6rem; /* Tamaño del icono ajustado */
+    width: 45px;
+    height: 45px;
+    font-size: 1.6rem;
     bottom: 15px;
     right: 15px;
   }
@@ -408,30 +396,177 @@ body {
 /* Responsive para Perfil */
 @media (min-width: 768px) {
   .profile-content {
-    flex-direction: row; /* En fila para pantallas más grandes */
-    align-items: flex-start; /* Alinea elementos al inicio */
-    justify-content: space-between; /* Distribuye el espacio entre las columnas */
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
   .profile-summary {
-    flex: 1; /* Ocupa el espacio disponible en la columna izquierda */
-    margin-right: 2rem; /* Espacio entre el resumen/contacto y la imagen */
-    order: 1; /* Asegura que sea la primera columna */
+    flex: 1;
+    margin-right: 2rem;
+    order: 1;
   }
 
   .profile-sidebar {
-    flex: 0 0 200px; /* Ancho fijo para la columna de la imagen (ajustado para 180px + padding) */
-    align-items: center; /* Centra la imagen dentro de su columna */
-    text-align: center; /* Centra la imagen si es el único contenido */
-    order: 2; /* Coloca la columna de la imagen a la derecha */
+    flex: 0 0 200px;
+    align-items: center;
+    text-align: center;
+    order: 2;
   }
 
   .profile-img {
-    margin-bottom: 0; /* No hay margen inferior en la imagen cuando es el único elemento en la barra lateral */
+    margin-bottom: 0;
   }
 
   .contact-list {
-    margin-top: 1rem; /* Mantiene el margen desde el texto del resumen */
-    width: auto; /* Permite que tome el ancho natural */
+    margin-top: 1rem;
+    width: auto;
+  }
+
+  /* Estilos personalizados para asegurar que los iframes ocupen el espacio deseado */
+  .iframe-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+       border-radius: 0.75rem;
+  }
+  .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+  }
+
+
+}
+
+/* Estilos específicos para la página de Proyectos - Espaciado Profesional */
+
+/* Contenedor principal de la página de proyectos */
+.main-proyectos-content {
+  padding-top: 3rem; /* Más espacio superior para separar del header/nav */
+  padding-bottom: 4rem; /* Más espacio inferior para el footer */
+}
+
+/* Contenedor wrapper para los proyectos */
+.proyectos-wrapper {
+  max-width: 900px; /* Un ancho máximo un poco más ajustado para la lectura */
+  margin: 0 auto; /* Centrar el contenedor */
+}
+
+/* Título principal de la sección de Proyectos */
+.proyectos-title {
+  font-size: 2.8rem; /* Aumentado el tamaño del título */
+  font-weight: 700;
+  text-align: center;
+  color: var(--acento);
+  margin-bottom: 2rem; /* Aumentado el margen inferior */
+  padding-bottom: 0.8rem; /* Más padding inferior para el borde */
+  border-bottom: 3px solid var(--acento); /* Borde más pronunciado */
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  letter-spacing: 0.05em; /* Ligeramente más espacio entre letras */
+}
+
+/* Estilo para cada sección de proyecto */
+.proyecto-item {
+  /* Reutilizamos las propiedades de .section */
+  margin-bottom: 3.5rem; /* Más espacio entre proyectos */
+  padding: 2.5rem; /* Aumentar el padding interno */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada y suave */
+  border: 1px solid rgba(255,255,255,0.15); /* Borde un poco más visible */
+}
+
+/* Subtítulos de los proyectos */
+.proyecto-item h2.proyecto-subtitle {
+  font-size: 2.2rem; /* Aumentado para títulos de proyecto */
+  font-weight: 600;
+  color: var(--acento2);
+  margin-bottom: 1.2rem; /* Más margen inferior para separar de la descripción */
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* Separador sutil */
+}
+
+/* Párrafos dentro de los proyectos */
+.proyecto-item p {
+  color: var(--texto);
+  margin-bottom: 1.8rem; /* Más margen inferior para separar párrafos */
+  line-height: 1.7; /* Altura de línea ligeramente mayor para mejor legibilidad */
+}
+
+/* Estilos para el botón de 'Ver Proyecto' */
+.btn-proyecto {
+  display: inline-block;
+  background-color: var(--acento);
+  color: #000000;
+  padding: 1rem 2rem; /* Más padding para un botón más prominente */
+  text-decoration: none;
+  font-weight: 700; /* Más negrita */
+  border-radius: 0.75rem; /* Bordes más redondeados */
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra más definida */
+  font-size: 1.05rem; /* Ligeramente más grande */
+}
+
+.btn-proyecto:hover {
+  background-color: #1a7cd8;
+  transform: translateY(-4px); /* Efecto de elevación más notable */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor del iframe */
+.iframe-container {
+  margin-bottom: 2rem; /* Más margen inferior para separar del botón */
+  border: 2px solid var(--acento); /* Borde más grueso para el iframe */
+  box-shadow: 0 0 15px rgba(32, 149, 255, 0.6); /* Sombra más pronunciada */
+}
+
+/* MEDIA QUERIES para responsividad en la página de proyectos */
+@media (max-width: 690px) {
+  .main-proyectos-content {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .proyectos-title {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--acento);
+  }
+
+  .proyecto-item {
+    padding: 1.8rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  }
+
+  .proyecto-item h2.proyecto-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .proyecto-item p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .btn-proyecto {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 0.6rem;
+  }
+
+  .iframe-container {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--acento);
+    box-shadow: 0 0 10px rgba(32, 149, 255, 0.5);
   }
 }

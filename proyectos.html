@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ismael Sánchez Rubio – Proyectos</title>
+    <link rel="icon" href="assets\favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="proyectos.js" defer></script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="container header-inner">
+        <h1>Ismael Sánchez Rubio</h1>
+        <div class="header-links">
+          <div class="btn-cv-wrapper">
+            <a href="index.html"class="btn-cv">
+              Currículum
+            </a>
+          </div>
+          <div class="btn-cv-wrapper">
+            <a href="proyectos.html"class="btn-cv">
+              Proyectos
+            </a>
+          </div>
+          <div class="btn-cv-wrapper">
+            <a href="assets\Cv_Ismael_Sanchez.pdf" download class="btn-cv">
+              Descargar CV
+            </a>
+            <div class="cv-preview-container">
+              <iframe src="assets\Cv_Ismael_Sanchez.pdf" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="container main-proyectos-content">
+      <div class="proyectos-wrapper">
+        <h1 class="proyectos-title">Proyectos</h1>
+
+        <section class="section proyecto-item">
+          <h2 class="proyecto-subtitle">OptiTask</h2>
+          <p>
+            Este es un gestor de tareas simple desarrollado con JavaScript puro,
+            HTML y CSS. Permite a los usuarios registrarse o iniciar sesión,
+            añadir, marcar como completadas, editar y eliminar tareas. Base de
+            datos en Supabase.
+          </p>
+          <div class="iframe-container mb-6">
+            <iframe
+              src="https://opti-task-rosy.vercel.app/login.html"
+              title="Aplicación de Tareas Pendientes"
+            ></iframe>
+          </div>
+          <a
+            href="https://opti-task-rosy.vercel.app/login.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-proyecto"
+          >
+            Ver Proyecto en Nueva Pestaña
+          </a>
+        </section>
+
+        <section class="section proyecto-item">
+          <h2 class="proyecto-subtitle">Terra Gabi</h2>
+          <p>
+            Página web de restaurante ficticio, Terra Gabi, desarrollada con
+            HTML, CSS y JavaScript. Incluye un menú interactivo, formulario de
+            contacto y una galería de imágenes. Utiliza Tailwind CSS para el
+            diseño responsivo.
+          </p>
+          <div class="iframe-container mb-6">
+            <iframe
+              src="https://terra-gabi-ismaelsanchezrubios-projects.vercel.app/"
+              title="Clon de Página de Destino"
+            ></iframe>
+          </div>
+          <a
+            href="https://terra-gabi-ismaelsanchezrubios-projects.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-proyecto"
+          >
+            Ver Proyecto en Nueva Pestaña
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <footer id="footer">
+      <div class="container footer-content">
+        <a href="#header" class="back-to-top" aria-label="Volver al inicio"
+          ><i class="fas fa-arrow-circle-up"></i
+        ></a>
+        <p>&copy; 2025 Ismael Sánchez Rubio. Todos los derechos reservados.</p>
+        <div class="footer-social-links">
+          <a
+            href="https://www.linkedin.com/in/ismaelsanchezrubio/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/IsmaelSanchezRubio"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="mailto:3ismaelsanchez@gmail.com" aria-label="Email"
+            ><i class="fas fa-envelope"></i
+          ></a>
+          <a
+            href="https://wa.me/34697183680"
+            target="_blank"
+            aria-label="WhatsApp"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+    <script src="app.js" defer></script>
+    </body>
+</html>
