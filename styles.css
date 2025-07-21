@@ -1,5 +1,9 @@
 /* Reset muy ligero */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* Variables de color */
 :root {
@@ -7,18 +11,18 @@
   --texto: #f5f5f5;
   --secundario: #a0a0a0;
   --acento: #2095ff;
-  --acento2:rgb(137, 198, 255);
-  --recuadro-bg: rgba(255,255,255,0.1);
+  --acento2: rgb(137, 198, 255);
+  --recuadro-bg: rgba(255, 255, 255, 0.1);
   --nav-bg: rgba(15, 15, 15, 0.9);
 }
 
 /* Tipografía base */
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   background-color: var(--fondo);
   color: var(--texto);
   line-height: 1.5;
-  background-image: url('assets/diamond-sunset.png');
+  background-image: url("assets/diamond-sunset.png");
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -36,7 +40,8 @@ body {
 #header {
   background-color: var(--fondo);
   border-bottom: 1px solid var(--secundario);
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Añadida transición para transform y opacity */
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease,
+    box-shadow 0.3s ease, opacity 0.3s ease; /* Añadida transición para transform y opacity */
   position: sticky; /* Asegura que el header se pueda posicionar para la transición */
   top: 0;
   z-index: 10; /* Asegura que esté por encima de otros elementos */
@@ -55,11 +60,12 @@ body {
 
 /* Estilos para el header cuando se esconde (se añadirá con JS) */
 #header.hidden {
-  transform: translateY(-100%); /* Mueve el header completamente fuera de la vista */
+  transform: translateY(
+    -100%
+  ); /* Mueve el header completamente fuera de la vista */
   opacity: 0; /* Lo hace invisible */
   box-shadow: none; /* Elimina la sombra cuando está escondido */
 }
-
 
 /* Contenedor para el botón de CV y la previsualización */
 .btn-cv-wrapper {
@@ -113,7 +119,6 @@ body {
   border-radius: 0.75rem;
 }
 
-
 /* Navegación */
 #nav {
   background-color: var(--nav-bg);
@@ -137,7 +142,8 @@ body {
   text-decoration: none;
   padding: 0.6rem 1rem;
   border-radius: 0.75rem;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
   font-weight: 600;
 }
 .nav-list a:hover {
@@ -154,16 +160,16 @@ body {
 .section {
   background: var(--recuadro-bg);
   backdrop-filter: blur(1px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
   transform: translateY(20px);
   scroll-margin-top: 6rem;
-  font-size: 1.1rem;;
-
+  font-size: 1.1rem;
 }
 
 /* Fade-in al entrar en viewport */
@@ -256,7 +262,6 @@ body {
   flex-grow: 1;
 }
 
-
 /* Footer */
 #footer {
   background-color: var(--fondo);
@@ -333,10 +338,8 @@ body {
   visibility: visible;
 }
 
-
 /* Responsive */
 @media (max-width: 690px) {
-
   .header-inner {
     flex-direction: column;
     align-items: center;
@@ -350,11 +353,12 @@ body {
     margin-bottom: 0.4rem; /* Reducido el margen inferior */
   }
 
-  .header-links { /* Añadido para arreglar la superposición de enlaces en móvil */
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.4rem; /* Reducido el gap */
+  .header-links {
+    /* Añadido para arreglar la superposición de enlaces en móvil */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem; /* Reducido el gap */
   }
 
   .btn-cv-wrapper {
@@ -376,7 +380,6 @@ body {
     justify-content: center;
     gap: 0.6rem; /* Reducido el gap */
     padding: 0.2rem 0;
-
   }
 
   .nav-list a {
@@ -388,7 +391,7 @@ body {
     scroll-margin-top: 7rem;
   }
 
-  #footer{
+  #footer {
     height: 150px;
   }
 
@@ -433,23 +436,21 @@ body {
 
   /* Estilos personalizados para asegurar que los iframes ocupen el espacio deseado */
   .iframe-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-       border-radius: 0.75rem;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.75rem;
   }
   .iframe-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
-
-
 }
 
 /* Estilos específicos para la página de Proyectos - Espaciado Profesional */
@@ -488,7 +489,7 @@ body {
   margin-bottom: 3.5rem; /* Más espacio entre proyectos */
   padding: 2.5rem; /* Aumentar el padding interno */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada y suave */
-  border: 1px solid rgba(255,255,255,0.15); /* Borde un poco más visible */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Borde un poco más visible */
 }
 
 /* Subtítulos de los proyectos */
