@@ -24,18 +24,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
-// Acordeones en móvil (si los necesitas)
-// Usa estructura:
-// <button class="acc-btn">Título</button>
-// <div class="accordion-content">Contenido</div>
-document.querySelectorAll('.acc-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const panel = btn.nextElementSibling;
-    // Alterna la altura máxima del panel para mostrar/ocultar el contenido.
-    panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + 'px';
-  });
-});
-
 // Resaltar la sección activa en la navegación al hacer scroll
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-list a');
@@ -78,18 +66,26 @@ const toggleBackToTopButton = () => {
 window.addEventListener('scroll', toggleBackToTopButton);
 window.addEventListener('load', toggleBackToTopButton); // Para que se active al cargar la página si ya hay scroll
 
-// NUEVA LÓGICA: Efecto "pegajoso" y de contracción para el Header
+// LÓGICA ACTUALIZADA: Efecto de ocultación para el Header
 const header = document.getElementById('header');
-const scrollThreshold = 50; // Define la cantidad de scroll (en píxeles) para activar el efecto.
+let lastScrollY = 0; // Para rastrear la posición de desplazamiento anterior
+const scrollHideThreshold = 50; // Umbral de scroll para ocultar el header al desplazarse hacia abajo
+const showAtTopThreshold = 100; // Umbral de scroll para mostrar el header solo al inicio de la página
 
 const handleHeaderScroll = () => {
-  // Si el scroll vertical es mayor que el umbral, añade la clase 'scrolled' al header.
-  // De lo contrario, quita la clase.
-  if (window.pageYOffset > scrollThreshold) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
+  const currentScrollY = window.pageYOffset;
+
+  // Si estamos haciendo scroll hacia abajo Y hemos pasado el umbral de ocultación, ocultamos el header.
+  if (currentScrollY > lastScrollY && currentScrollY > scrollHideThreshold) {
+    header.classList.add('hidden');
   }
+  // Si estamos muy cerca del principio de la página (dentro del umbral de mostrar), mostramos el header.
+  // Esto cubrirá tanto el scroll hacia arriba que llega al inicio como la carga inicial de la página.
+  else if (currentScrollY < showAtTopThreshold) {
+    header.classList.remove('hidden');
+  }
+
+  lastScrollY = currentScrollY; // Actualiza la última posición de scroll
 };
 
 // Añade los event listeners para el scroll y la carga de la página.
