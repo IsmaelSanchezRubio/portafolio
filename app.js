@@ -70,6 +70,15 @@ const toggleBackToTopButton = () => {
   }
 };
 
+// Añadir el event listener para el click del botón "Volver al inicio"
+backToTopButton.addEventListener("click", (e) => {
+  e.preventDefault(); // Previene el comportamiento por defecto del enlace
+  window.scrollTo({
+    top: 0, // Desplaza la página al principio (coordenada Y = 0)
+    behavior: "smooth", // Hace el desplazamiento suave
+  });
+});
+
 window.addEventListener("scroll", toggleBackToTopButton);
 window.addEventListener("load", toggleBackToTopButton); // Para que se active al cargar la página si ya hay scroll
 
